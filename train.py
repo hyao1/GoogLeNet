@@ -1,4 +1,4 @@
-import os, sys
+import os,sys
 import torch
 import torch.nn as nn
 from torchvision import transforms, datasets
@@ -12,9 +12,9 @@ progpath = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(progpath)
 
 lr = 0.01
-datasets_path = "/content/drive/My Drive/CrossX-master/utils/cubbirds/"
+datasets_path = "D:/paper_code/GoogLeNet/dataset/cubbirds/"
 pymodel = "/content/drive/My Drive/CrossX-master/pymodels"
-batch_size = 16
+batch_size = 10
 img_size = 448
 epochs = 30
 dataset_name = 'cubbirds'
@@ -40,12 +40,12 @@ data_transform = {
          transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])]
     )
 }
-train_dataset = datasets.ImageFolder(root=datasets_path + "trainval", transform=data_transform["trainval"])
+train_dataset = datasets.ImageFolder(root=datasets_path + "train", transform=data_transform["trainval"])
 validate_dataset = datasets.ImageFolder(root=datasets_path + "test", transform=data_transform["test"])
 
 train_loader = torch.utils.data.DataLoader(train_dataset,
-                                           batch_size=batch_size, shuffle=True,
-                                           num_workers=8)
+                                           batch_size=batch_size, shuffle=False,
+                                           num_workers=0)
 validate_loader = torch.utils.data.DataLoader(validate_dataset,
                                               batch_size=batch_size, shuffle=False,
                                               num_workers=8)
