@@ -1,11 +1,11 @@
+"""
+    the ImageFloader
+"""
 from torchvision import transforms
 import os
 from PIL import Image
-
 from torch.utils.data import Dataset
 import numpy as np
-from collections import OrderedDict
-
 
 class TorchDataset(Dataset):
     def __init__(self, root, class_num=200, img_size=448, is_train=True):
